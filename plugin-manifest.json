@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "name": "ml-train-sdn-plugin",
+  "version": "0.1.0",
+  "description": "Train small BitNet-style neural networks for satellite telemetry anomaly detection. Supports XTCE telemetry definitions, quantization-aware training with ternary weights {-1, 0, +1}, and compact model serialization.",
+  "author": "DigitalArsenal",
+  "license": "MIT",
+  "inputs": ["$XTCE", "$TDM"],
+  "outputs": ["$SDNM"],
+  "tags": ["ml", "training", "anomaly-detection", "xtce", "bitnet", "ternary"],
+  "wasm": {
+    "exportName": "ML_TRAIN_WASM",
+    "exports": ["train_autoencoder", "train_classifier", "parse_xtce", "serialize_model", "malloc", "free"],
+    "initialMemoryMB": 16,
+    "maxMemoryMB": 128
+  }
+}
